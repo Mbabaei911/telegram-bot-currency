@@ -11,6 +11,7 @@ console.log(token);
 const bot = new TelegramBot(token, {
     polling: true // No proxy
 });
+const app = express();
 // Function to fetch currency data
 async function fetchCurrencyData() {
     try {
