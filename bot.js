@@ -6,7 +6,7 @@ dotenv.config();
 const token = process.env.TOKEN;
 const channelId = process.env.CHANNEL_ID;
 
-
+console.log(token);
 const bot = new TelegramBot(token, {
     polling: true // No proxy
 });
@@ -21,18 +21,30 @@ async function fetchCurrencyData() {
         console.error('Error 1 fetching currency data:', error);
     }
 }
-// bot.sendMessage(channelId,"hihihi")
+bot.sendMessage(channelId,"hihi")
 
 // Function to send currency updates to the channel
-async function sendCurrencyUpdates() {
-    const rates = await fetchCurrencyData();
-    if (rates) {
-        const message = `Current Currency Rates:\n` +
-            `DOLLAR: ${rates}\n` +
+// async function sendCurrencyUpdates() {
+//     const rates = await fetchCurrencyData();
+//     if (rates) {
+//         const message = `Current Currency Rates:\n` +
+//             `DOLLAR: ${rates}\n` +
 
-        bot.sendMessage(channelId, message);
-    }
-}
+//         bot.sendMessage(channelId, message);
+//     }
+// }
 
+// async function sendCurrencyUpdates() {
+//     const rates = await fetchCurrencyData();
+//     console.log('Fetched rates:', rates); // Debugging line
+//     if (rates) {
+//         const message = `Current Currency Rates:\n` +
+//             `DOLLAR: ${rates}\n`;
+//         console.log('Message to send:', message); // Debugging line
+//         bot.sendMessage(channelId, message);
+//     } else {
+//         console.error('No rates available to send.'); // Handle case where rates are not available
+//     }
+// }
 // // Send updates every minute
-setInterval(sendCurrencyUpdates, 60000); 
+// setInterval(sendCurrencyUpdates, 60000); 
