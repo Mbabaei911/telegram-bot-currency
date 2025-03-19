@@ -1,11 +1,12 @@
 import fetch from 'node-fetch';
 import TelegramBot from 'node-telegram-bot-api';
+import express from 'express';
 import dotenv from 'dotenv';
 dotenv.config();
 // Replace with your bot token and channel username
 const token = process.env.TOKEN;
 const channelId = process.env.CHANNEL_ID;
-
+const PORT = process.env.PORT || 3000;
 console.log(token);
 const bot = new TelegramBot(token, {
     polling: true // No proxy
@@ -22,6 +23,9 @@ async function fetchCurrencyData() {
     }
 }
 bot.sendMessage(channelId,"hihi")
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+});
 
 // Function to send currency updates to the channel
 // async function sendCurrencyUpdates() {
